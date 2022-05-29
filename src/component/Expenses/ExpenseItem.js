@@ -12,7 +12,7 @@ const ExpenseItem = (props) => {
         <div>
         <div className="expense-item">
         <div className='d-flex flex-row'>
-           <ExpenseDate date1={props.date}/>
+           <ExpenseDate date1={ props.date }/>
         </div> 
 
         <div className="expense-item__description">
