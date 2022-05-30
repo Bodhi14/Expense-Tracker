@@ -43,6 +43,10 @@ const SubmitHandler = (event) =>
         date: newdate
 
     }
+
+    setnewtitle("");
+    setnewamount("");
+    setnewdate("");
 }
 
 
