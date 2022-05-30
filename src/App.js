@@ -1,17 +1,20 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import './App.css';
-import Expenses from "./component/Expenses/Expenses";
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpenses/NewExpense";
 
 
 function App()
 {  
+    let today = new Date(2022, 4, 30)
+    
     let expenses = [
         {
             id: '1',
             title: "College Fee ",
             amount: 250,
-            date: new Date(2022, 4, 28)
+            date: today
     
     
         },
@@ -19,7 +22,7 @@ function App()
             id: '2',
             title: "College Fee ",
             amount: 500,
-            date: new Date(2022, 4, 28)
+            date: today
     
     
         },
@@ -27,7 +30,7 @@ function App()
             id: '3',
             title: "College Fee ",
             amount: 750,
-            date: new Date(2022, 4, 28)
+            date: today
     
     
         },
@@ -35,7 +38,7 @@ function App()
             id: '4',
             title: "College Fee ",
             amount: 1000,
-            date: new Date(2022, 4, 28)
+            date: today
     
     
         }
@@ -44,6 +47,7 @@ function App()
 
     return(
         <div>
+        <NewExpense />
         <Expenses item={ expenses }/>
        </div>
     );
