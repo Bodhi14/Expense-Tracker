@@ -7,11 +7,11 @@ import ExpenseItem from "../Expenses/ExpenseItem";
 
 
 const ExpenseForm = () => {
-    const [title, setnewtitle] = useState("");
+    const [newtitle, setnewtitle] = useState("");
 
-    const [amount, setnewamount] = useState("");
+    const [newamount, setnewamount] = useState("");
 
-    const [date, setnewdate] = useState("");
+    const [newdate, setnewdate] = useState("");
 
     const titlehandler = (event) =>
 {
@@ -37,7 +37,12 @@ const SubmitHandler = (event) =>
 {
     event.preventDefault();
 
+    const ExpenseData = {
+        title: newtitle,
+        amount: newamount,
+        date: newdate
 
+    }
 }
 
 
@@ -46,15 +51,15 @@ const SubmitHandler = (event) =>
         <div className="new-expense__controls">
             <div className="new-expense__control">
                 <label>Title</label>
-                <input type="text" onChange={ titlehandler }/>
+                <input type="text" value="newtitle" onChange={ titlehandler }/>
             </div>
             <div className="new-expense__control">
                 <label>Amount</label>
-                <input type="number" min="0.01" step="0.01" onChange={ amounthandler }/>
+                <input type="number" value="newamount" min="0.01" step="0.01" onChange={ amounthandler }/>
             </div>
             <div className="new-expense__control">
                 <label>Date</label>
-                <input type="date" onChange={ datehandler }/>
+                <input type="date" value="newdate" onChange={ datehandler }/>
             </div>
         </div>
         <div className="new-expense__actions">
