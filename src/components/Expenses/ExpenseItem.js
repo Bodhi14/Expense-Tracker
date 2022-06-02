@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import './ExpenseItem.css';
-import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 const ExpenseItem = (props) => {
     
@@ -11,13 +10,12 @@ const ExpenseItem = (props) => {
         
         
         <div>
-        <Card className="expense-item">
-        <div className='d-flex flex-row'>
-           <ExpenseDate date={ props.date }/>
-        </div> 
+        <Card className="expense-item"> 
 
-        <div className="expense-item__description">
+        <div className="expense-item__description d-flex flex-row">
         <h2>{ props.title }</h2> 
+        <h2>{ props.id }</h2>
+
         
         <div className="expense-item__price">${ props.amount }</div> 
         </div>
