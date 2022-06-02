@@ -11,7 +11,7 @@ const ExpenseForm = (props) => {
 
     const [newamount, setnewamount] = useState('');
 
-    const [newdate, setnewdate] = useState(new Date(2022, 4, 31));
+    const[ispending, setispending] = useState(false);
 
 const titlehandler = (event) =>
 {
@@ -27,11 +27,7 @@ const amounthandler = (event) =>
 
 }
 
-const datehandler = (event) =>
-{
-    setnewdate(event.target.value);
 
-}
 
 const SubmitHandler = (event) =>
 {
@@ -40,17 +36,31 @@ const SubmitHandler = (event) =>
     const ExpenseData = {
         title: newtitle,
         amount: newamount,
-        date: newdate
+        id: Math.random()
 
     }
 
     setnewtitle('');
     setnewamount('');
-    setnewdate('');
+
+    setispending(true);
 
 
     props.onSaveExpenseData(ExpenseData);
+
+
+    fetch('http://127.0.0.1:8000/expenses-api/', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(ExpenseData)
+    }).then(() => {
+        console.log(ExpenseData);
+        setispending(false);
+    }).catch(() => {
+        console.log("Unable to fetch the api, check CORS Origin");
+    })
 }
+
 
 
     return(
@@ -63,10 +73,6 @@ const SubmitHandler = (event) =>
             <div className="new-expense__control">
                 <label>Amount</label>
                 <input type="number" value={ newamount } min="0.01" step="0.01" onChange={ amounthandler }/>
-            </div>
-            <div className="new-expense__control">
-                <label>Date</label>
-                <input type="date" value={ newdate } onChange={ datehandler }/>
             </div>
         </div>
         <div className="new-expense__actions">
