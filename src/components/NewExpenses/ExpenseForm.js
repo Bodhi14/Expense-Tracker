@@ -11,7 +11,12 @@ const ExpenseForm = (props) => {
 
     const [newamount, setnewamount] = useState('');
 
-    const[ispending, setispending] = useState(false);
+
+    const[newid, setnewid] = useState('');
+
+
+
+    
 
 const titlehandler = (event) =>
 {
@@ -27,6 +32,11 @@ const amounthandler = (event) =>
 
 }
 
+const idhandler = (event) =>
+{
+    setnewid(event.target.value);
+}
+
 
 
 const SubmitHandler = (event) =>
@@ -36,14 +46,15 @@ const SubmitHandler = (event) =>
     const ExpenseData = {
         title: newtitle,
         amount: newamount,
-        id: Math.random()
+        id: newid
 
     }
 
     setnewtitle('');
     setnewamount('');
+    setnewid('');
 
-    setispending(true);
+    
 
 
     props.onSaveExpenseData(ExpenseData);
@@ -54,10 +65,11 @@ const SubmitHandler = (event) =>
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(ExpenseData)
     }).then(() => {
-        console.log(ExpenseData);
-        setispending(false);
+               setTimeout( () => { document.querySelector("button").innerText = "Adding Expense..." }, 1000);
+               alert("New Expense added , having id " + ExpenseData.id);
+
     }).catch(() => {
-        console.log("Unable to fetch the api, check CORS Origin");
+        alert("Sorry, due to some error, this item can't be added");
     })
 }
 
@@ -74,9 +86,13 @@ const SubmitHandler = (event) =>
                 <label>Amount</label>
                 <input type="number" value={ newamount } min="0.01" step="0.01" onChange={ amounthandler }/>
             </div>
+            <div className="new-expense__control">
+                <label>ID</label>
+                <input type="number" value={ newid } onChange={ idhandler } />
+            </div>
         </div>
         <div className="new-expense__actions">
-            <button className="btn btn-primary" type="submit">Add Expense</button>
+            <button className="btn btn-primary" id="btn" type="submit">Add Expense</button>
         </div>
         </form>
 

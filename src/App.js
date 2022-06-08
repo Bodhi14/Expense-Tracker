@@ -38,7 +38,12 @@ const App = () =>
 
         fetch('http://127.0.0.1:8000/expenses-api/').then(
             res => res.json()
-            ).then( data => setnewexpenses(data) )
+            ).then((data) => {
+            
+                setnewexpenses(data)
+                console.log(data)
+              
+              })
         
         
         }, []);
