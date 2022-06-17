@@ -24,3 +24,8 @@
 .new-expense__actions {
     text-align: right;
 }
+
+.errortext {
+    color: red;
+    padding-left: 5vw;
+}
