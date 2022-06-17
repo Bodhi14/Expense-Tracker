@@ -5,7 +5,7 @@ import Card from '../UI/Card';
 const ExpenseItem = (props) => {
     
     
-
+    
     return ( 
         
         
@@ -18,6 +18,7 @@ const ExpenseItem = (props) => {
 
         
         <div className="expense-item__price">${ props.amount }</div> 
+        <button className="btn-warning">EDIT</button>
         </div>
 
 
