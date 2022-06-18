@@ -13,11 +13,11 @@ const UpdateForm = (props) => {
 
 const previousdata = (predata) =>
 {
-    let pretitle = predata.prevtitle;
-    let preamount = predata.prevamount;
-    let preid = predata.previd;
+     pretitle = predata.prevtitle;
+     preamount = predata.prevamount;
+     preid = predata.previd;
 
-}
+} 
    
     const formik = useFormik({
         
@@ -42,6 +42,23 @@ const previousdata = (predata) =>
             id: formik.values.id
 
         }
+        
+
+        fetch('http://127.0.0.1:8000/expenses-api/' + formik.values.id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedData)
+    }).then(
+        alert("The Expense has been changed")).catch(
+            alert("Sorry, unable to change the expense"));
+
+        
+
+        formik.values.title = '';
+        formik.values.amount = '';
+        formik.values.id = '';
     },
     validationSchema: Yup.object({
          title: Yup.string().max(10, "Can be at max 10 characters long").required("Required"),
@@ -51,7 +68,7 @@ const previousdata = (predata) =>
 });
 return(
     <>
-       <form>
+       <form onSubmit={ formik.handleSubmit }>
        <div class="form_contents">
        <label>Title</label>
        <input type="text" id="title" name="title" value={ formik.values.title } onChange={ formik.handleChange } onBlur={ formik.handleBlur }/>
@@ -61,7 +78,7 @@ return(
         <label>ID</label>
         <input type="number" id="id" name="id" value={ formik.values.id } onChange={ formik.handleChange } onBlur={ formik.handleBlur }/>
         {(formik.touched.id && formik.errors.id) ? <p className="errortext">{formik.errors.id}</p> : null}
-        <button className="btn btn-success">Update</button>
+        <button className="btn btn-success" type="submit">Update</button>
         </div>
 
        </form>
