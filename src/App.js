@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpenses/NewExpense";
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import UpdateForm from "./components/NewExpenses/UpdateForm";
 
 
 
@@ -40,8 +42,8 @@ const App = () =>
             res => res.json()
             ).then((data) => {
             
-                setnewexpenses(data)
-                console.log(data)
+                setnewexpenses(data);
+                console.log(data);
               
               })
         
@@ -50,10 +52,20 @@ const App = () =>
     
 
     return(
-       <div>
+        <Router>
+        <div className="bg-image">
         <NewExpense addexpense={ addexpensehandler } />
         <Expenses item={ expenses }/>
-       </div>
+        <Routes>
+            <Route path="/updateform" element={<UpdateForm></UpdateForm>}>
+                
+            </Route>
+        </Routes>
+        
+        </div>
+        
+        
+       </Router>
     );
 }
 

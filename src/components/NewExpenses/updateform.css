@@ -1,0 +1,16 @@
+.form_contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+
+.btn {
+    margin-top: 4vh;
+}
+
+.errortext {
+    color: red;
+    padding-left: 1vw;
+}
