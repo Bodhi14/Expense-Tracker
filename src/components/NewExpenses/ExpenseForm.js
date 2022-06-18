@@ -1,23 +1,29 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import './ExpenseForm.css';
+import ExpenseItem from "../Expenses/ExpenseItem";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
 
 
 
+
 const ExpenseForm = (props) => {
 
-    
+
+
+
+
     const formik = useFormik({
     initialValues:{
 
         title: '',
         amount: '',   
-        id: '' 
+        id: ''
 
     },
+
     validateOnBlur: true,
     onSubmit: values => {
         const ExpenseData = {
@@ -137,8 +143,11 @@ const ExpenseForm = (props) => {
         </div>
         <div className="new-expense__actions">
             <button className="btn btn-primary" id="btn" type="submit">Add Expense</button>
+            
         </div>
         </form>
+        
+        
 
 
     );
