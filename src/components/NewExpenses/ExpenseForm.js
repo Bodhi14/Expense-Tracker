@@ -65,9 +65,7 @@ const SubmitHandler = (event) =>
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(ExpenseData)
     }).then(() => {
-               setTimeout( () => { document.querySelector("button").innerText = "Adding Expense..." }, 1000);
                alert("New Expense added , having id " + ExpenseData.id);
-
     }).catch(() => {
         alert("Sorry, due to some error, this item can't be added");
     })
