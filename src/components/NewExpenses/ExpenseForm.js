@@ -21,6 +21,8 @@ const ExpenseForm = (props) => {
     setnewid(event.target.value);
   };
 
+  const [active, setactive] = useState(false);
+
   const SubmitHandler = (event) => {
     event.preventDefault();
 
@@ -72,7 +74,18 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button className="btn btn-primary" id="btn" type="submit">
+        <button
+          className="btn color-btn"
+          id="btn"
+          type="submit"
+          onClick={() => {
+            setTimeout(() => {
+              setactive(false);
+            }, 1000);
+            setactive(true);
+          }}
+          style={{ backgroundColor: active ? "blue" : "purple" }}
+        >
           Add Expense
         </button>
       </div>
