@@ -32,11 +32,13 @@ const ExpenseForm = (props) => {
       id: newid
     };
 
+    
+    props.onSaveExpenseData(ExpenseData);
+
     setnewtitle("");
     setnewamount("");
     setnewid("");
 
-    props.onSaveExpenseData(ExpenseData);
 
     fetch("bodhi.pythonanywhere.com/expenses-api/", {
       method: "POST",
