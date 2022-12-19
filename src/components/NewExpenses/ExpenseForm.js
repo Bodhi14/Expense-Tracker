@@ -40,7 +40,7 @@ const ExpenseForm = (props) => {
     setnewid("");
 
 
-    fetch("bodhi.pythonanywhere.com/expenses-api/", {
+    fetch("https://bodhi.pythonanywhere.com/expenses-api/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(ExpenseData)

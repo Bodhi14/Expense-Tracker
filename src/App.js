@@ -17,7 +17,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetch("bodhi.pythonanywhere.com/expenses-api/")
+    fetch("https://bodhi.pythonanywhere.com/expenses-api/")
       .then((res) => res.json())
       .then((data) => {
         setnewexpenses(data);
