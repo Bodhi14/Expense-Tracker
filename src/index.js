@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+if (process.env.NODE_ENV === 'production') {
+    console.log = () => {}
+    console.error = () => {}
+    console.debug = () => {}
+}
 
 ReactDom.render(<App />, document.getElementById('root'));
 
