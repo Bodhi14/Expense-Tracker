@@ -90,7 +90,7 @@ const ExpenseForm = (props) => {
             }, 1000);
             setactive(true);
           }}
-          style={{ backgroundColor: active ? "blue" : "purple" }}
+          style={{ backgroundColor: active ? "green" : "purple" }}
         >
           Add Expense
         </button>
