@@ -4,7 +4,10 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpenses/NewExpense";
+import axios from 'axios';
 
+
+const getURL = "https://bodhi.pythonanywhere.com/expenses-api/";
 let prevexpenses = [];
 
 const App = () => {
@@ -16,14 +19,17 @@ const App = () => {
     setnewexpenses(updatedexpense);
   };
 
+
+
   useEffect(() => {
-    fetch("https://bodhi.pythonanywhere.com/expenses-api/")
-      .then((res) => res.json())
+    axios.get(getURL)
       .then((data) => {
-        setnewexpenses(data);
-        console.log(data);
+        setnewexpenses(data.data);
+        console.log(data.data);
       });
   }, []);
+
+
 
   return (
     <div>

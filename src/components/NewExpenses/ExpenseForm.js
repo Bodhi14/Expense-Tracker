@@ -1,8 +1,12 @@
 /* eslint-disable no-unused-vars */
+import axios from "axios";
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
+
+  const postURL = "https://bodhi.pythonanywhere.com/expenses-api/";
+  
   const [newtitle, setnewtitle] = useState("");
 
   const [newamount, setnewamount] = useState("");
@@ -40,10 +44,10 @@ const ExpenseForm = (props) => {
     setnewid("");
 
 
-    fetch("https://bodhi.pythonanywhere.com/expenses-api/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(ExpenseData)
+    axios.post(postURL, {
+      title: ExpenseData.title,
+      amount: ExpenseData.amount,
+      id: ExpenseData.id
     })
       .then(() => {
         alert("New Expense added , having id " + ExpenseData.id);
