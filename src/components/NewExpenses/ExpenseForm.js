@@ -91,6 +91,16 @@ const ExpenseForm = (props) => {
             setactive(true);
           }}
           style={{ backgroundColor: active ? "green" : "purple" }}
+          onMouseEnter={()=>
+               {
+                setactive(true);
+              }
+            }
+          onMouseLeave={()=>
+             {
+              setactive(false);
+             }
+          }
         >
           Add Expense
         </button>
